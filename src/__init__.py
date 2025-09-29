@@ -1,1 +1,0 @@
-# SAP BusinessObjects MCP Server Package
