@@ -1,0 +1,34 @@
+{
+  "sap_bo": {
+    "server_url": "http://your-sap-bo-server:6405",
+    "cms_name": "your-cms-name",
+    "username": "your-username",
+    "password": "your-password",
+    "auth_type": "secEnterprise",
+    "timeout": 30
+  },
+  "mcp": {
+    "server_name": "sap-businessobjects",
+    "version": "1.0.0",
+    "host": "localhost",
+    "port": 8080
+  },
+  "security": {
+    "read_only_mode": false,
+    "require_confirmation": true,
+    "audit_enabled": true,
+    "max_bulk_operations": 100
+  },
+  "email": {
+    "smtp_server": "your-smtp-server",
+    "smtp_port": 587,
+    "use_tls": true,
+    "notification_email": "admin@yourcompany.com"
+  },
+  "logging": {
+    "level": "INFO",
+    "file_path": "logs/sap-bo-mcp.log",
+    "max_file_size": "10MB",
+    "backup_count": 5
+  }
+}
