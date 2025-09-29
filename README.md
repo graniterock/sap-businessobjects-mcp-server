@@ -2,6 +2,15 @@
 
 A Model Context Protocol (MCP) server for SAP BusinessObjects 4.3 SP02+ administration, enabling AI assistants like Claude to directly manage user permissions, email lists, and Crystal Reports diagnostics.
 
+## 🚀 **NEW: FastMCP Enterprise Edition**
+
+We now include a **FastMCP-powered server** (`src/fastmcp_server.py`) with enterprise features:
+- **🔐 Enterprise Authentication**: Google OAuth, GitHub, Auth0, Azure AD
+- **📊 Session Management**: Progress reporting, context-aware operations
+- **🛡️ Production Security**: Error masking, rate limiting, audit logging
+- **⚡ Developer Experience**: Decorator-based tools, automatic validation
+- **📈 Real-time Monitoring**: Health checks, performance metrics, status resources
+
 ## Features
 
 - **User Permission Management**: Copy permissions between users, manage group memberships
@@ -11,6 +20,7 @@ A Model Context Protocol (MCP) server for SAP BusinessObjects 4.3 SP02+ administ
 
 ## Quick Start
 
+### Standard MCP Server (Basic)
 ```bash
 # Install dependencies
 pip install -r requirements.txt
@@ -19,9 +29,42 @@ pip install -r requirements.txt
 cp config/config.example.json config/config.json
 # Edit config.json with your SAP BO server details
 
-# Start MCP server
+# Start standard MCP server
 python src/server.py
 ```
+
+### FastMCP Server (Enterprise) ⭐ **Recommended**
+```bash
+# Install FastMCP
+pip install fastmcp>=2.0.0
+
+# Development mode (no auth)
+export SAP_BO_DEPLOYMENT=development
+python src/fastmcp_server.py
+
+# Production mode (with OAuth)
+export SAP_BO_DEPLOYMENT=production
+export GOOGLE_CLIENT_ID="your-client-id"
+export GOOGLE_CLIENT_SECRET="your-client-secret"
+python src/fastmcp_server.py
+```
+
+See [FastMCP Deployment Guide](docs/FASTMCP_DEPLOYMENT.md) for complete setup instructions.
+
+## 📊 Standard vs FastMCP Comparison
+
+| Feature | Standard MCP | FastMCP Enterprise |
+|---------|-------------|-------------------|
+| **Development** | Manual tool registration | `@mcp.tool()` decorators |
+| **Authentication** | None | Google, GitHub, Auth0, Azure |
+| **Session Management** | Basic | Rich context with progress tracking |
+| **Error Handling** | Basic exceptions | Security-hardened error masking |
+| **Monitoring** | None | Real-time health checks & metrics |
+| **Production Ready** | Development/Testing | Enterprise deployment |
+| **Progress Reporting** | None | Built-in progress tracking |
+| **Security** | Basic | Rate limiting, audit logging, CORS |
+| **Deployment** | Single mode | Development/Production modes |
+| **AI Integration** | Basic tools | Strategic prompts & LLM sampling |
 
 ## MCP Tools
 

@@ -1,0 +1,68 @@
+{
+  "authentication": {
+    "enabled": false,
+    "provider": "google",
+    "providers": {
+      "google": {
+        "client_id": "your-google-oauth-client-id",
+        "client_secret": "your-google-oauth-client-secret",
+        "base_url": "https://your-server.com",
+        "allowed_domains": ["graniterock.com", "yourcompany.com"]
+      },
+      "auth0": {
+        "domain": "your-domain.auth0.com",
+        "client_id": "your-auth0-client-id",
+        "client_secret": "your-auth0-client-secret",
+        "base_url": "https://your-server.com"
+      },
+      "github": {
+        "client_id": "your-github-client-id",
+        "client_secret": "your-github-client-secret",
+        "base_url": "https://your-server.com",
+        "allowed_organizations": ["graniterock"]
+      },
+      "azure": {
+        "tenant_id": "your-azure-tenant-id",
+        "client_id": "your-azure-client-id",
+        "client_secret": "your-azure-client-secret",
+        "base_url": "https://your-server.com"
+      }
+    }
+  },
+  "session": {
+    "timeout_minutes": 60,
+    "max_concurrent_sessions": 100,
+    "require_session_validation": true,
+    "session_storage": "memory"
+  },
+  "security": {
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 60,
+      "burst_allowance": 10
+    },
+    "audit": {
+      "log_all_operations": true,
+      "log_authentication": true,
+      "log_failures": true,
+      "retention_days": 90
+    },
+    "network": {
+      "allowed_origins": ["https://claude.ai", "https://your-app.com"],
+      "cors_enabled": true,
+      "require_https": true
+    }
+  },
+  "enterprise": {
+    "single_sign_on": {
+      "enabled": false,
+      "saml_endpoint": "https://your-sso.com/saml",
+      "entity_id": "sap-bo-mcp-server"
+    },
+    "compliance": {
+      "gdpr_compliance": true,
+      "data_retention_policy": "90_days",
+      "encryption_at_rest": true
+    }
+  }
+}
